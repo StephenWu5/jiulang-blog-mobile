@@ -35,7 +35,7 @@ export default defineConfig({
 		proxy: {},
 	},
 	// 生产环境打包配置
-	//去除 console debugger
+	// 去除 console debugger
 	build: {
 		terserOptions: {
 			compress: {
