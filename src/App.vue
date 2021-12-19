@@ -1,20 +1,42 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
+<script lang="ts">
+import { reactive } from "vue";
+import Nav from "./components/layouts/nav.vue";
+import Content from "./components/layouts/content.vue";
+import Footer from "./components/layouts/footer.vue";
 
+import { isMobileOrPc } from './utils/index';
+// 移动端 rem 单位适配
+if (isMobileOrPc()) {
+	// width * 100 / 750 = width / 7.5
+	// 1rem = 100px
+	var width = window.screen.width;
+	window.document.getElementsByTagName("html")[0].style.fontSize =
+		width / 7.5 + "px";
+}
+
+export default {
+	components: {
+		Nav,
+		Content,
+		Footer,
+	},
+	setup() {
+		const name = reactive({
+			name: "hello 番茄",
+		});
+		const parentClick = (e: any) => {
+			console.log(e);
+		};
+		return { name, parentClick };
+	},
+};
+</script>
 <template>
-    <router-view></router-view>
+	<div>
+		<Nav />
+		<Content />
+		<Footer />
+	</div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: $test-color;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss"></style>
