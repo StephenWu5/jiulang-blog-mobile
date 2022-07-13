@@ -8,6 +8,7 @@
       "sourceMap": true,
       "resolveJsonModule": true,
       "esModuleInterop": true,
+      "importHelpers": true,
       "lib": ["esnext", "dom"],
       "baseUrl": ".",
       "paths": {
